@@ -1,7 +1,9 @@
 .scratch-container {
-    position: relative;
-    width: 100vw; /* Ajusta el tamaño según tu imagen */
-    height: 100vh;
+    position: absolute;
+    top: -20vh;
+    left: -30vw;
+    width: 200vw; /* Ajusta el tamaño según tu imagen */
+    height: 200vh;
   }
   
   #scratchCanvas, #backgroundImage {

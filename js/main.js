@@ -32,7 +32,7 @@ canvas.addEventListener('mousemove', function(e) {
   // Crear el efecto de linterna (área visible)
   ctx.save();  // Guardar el estado actual del canvas
   ctx.beginPath();
-  ctx.arc(x, y, 50, 0, 2 * Math.PI);  // Ajusta el radio para el efecto de linterna
+  ctx.arc(x, y, 30, 0, 2 * Math.PI);  // Ajusta el radio para el efecto de linterna
   ctx.clip();  // Recortar todo lo que esté fuera del círculo
 
   // Dibujar solo el área visible de la imagen debajo del cursor
