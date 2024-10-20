@@ -28,7 +28,7 @@ canvas.addEventListener('mousemove', function(e) {
 
   // Volver a dibujar la imagen de fondo y oscurecerla parcialmente
   ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
+  ctx.fillStyle = "rgba(0, 0, 0, 0.95)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   
   // Crear el degradado radial para la linterna
@@ -55,12 +55,5 @@ canvas.addEventListener('mousemove', function(e) {
   
   ctx.restore();  // Restaurar el estado completo del canvas
 
-  // Ajustar el borde del círculo
-  ctx.beginPath();
-  ctx.arc(x, y, radius, 0, 2 * Math.PI);
-  ctx.lineWidth = 3; // Grosor del borde reducido
-  ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)'; // Borde con opacidad más baja
-  ctx.shadowBlur = 100; // Aumentar el desenfoque del borde
-  ctx.shadowColor = 'rgba(255, 255, 255, 0.5)'; // Color de la sombra
-  ctx.stroke();
+
 });
