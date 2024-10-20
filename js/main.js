@@ -2,35 +2,40 @@ const canvas = document.getElementById('scratchCanvas');
 const ctx = canvas.getContext('2d');
 const backgroundImage = document.getElementById('backgroundImage');
 
-// Función para ajustar el tamaño del canvas sin perder el área raspada
+// Función para ajustar el tamaño del canvas al cargar y redimensionar
 function resizeCanvas() {
-  const data = ctx.getImageData(0, 0, canvas.width, canvas.height); // Guardar el estado actual del canvas
-
-  // Ajustar las dimensiones del canvas al tamaño de la ventana
-  canvas.width = window.innerWidth * 0.8; // O cualquier tamaño relativo a la ventana
+  canvas.width = window.innerWidth * 0.8; // Ajustar al tamaño deseado
   canvas.height = window.innerHeight * 0.6;
 
-  // Cubrir el canvas con un color (simula la tarjeta de raspado)
-  ctx.fillStyle = '#ccc';
+  // Llenar el canvas con una capa oscura cuando no se está usando el cursor
+  ctx.fillStyle = "rgba(0, 0, 0, 1)"; // Oscurecer completamente
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  
-  // Volver a colocar el contenido anterior en el canvas
-  ctx.putImageData(data, 0, 0);
 }
 
 // Ajustar el tamaño del canvas al cargar la página
-resizeCanvas();
+backgroundImage.onload = function() {
+  resizeCanvas(); // Ajustar el canvas una vez que la imagen está cargada
+};
 
-// Escuchar el evento de redimensionar la ventana y reajustar el canvas sin borrar el contenido
+// Escuchar el evento de redimensionar la ventana
 window.addEventListener('resize', resizeCanvas);
 
 canvas.addEventListener('mousemove', function(e) {
-  const rect = canvas.getBoundingClientRect(); // Obtener la nueva posición del canvas
-  const x = (e.clientX - rect.left) * (canvas.width / rect.width); // Escalar correctamente
+  const rect = canvas.getBoundingClientRect();
+  const x = (e.clientX - rect.left) * (canvas.width / rect.width);
   const y = (e.clientY - rect.top) * (canvas.height / rect.height);
 
-  ctx.globalCompositeOperation = 'destination-out'; // Hace el área transparente
+  // Limpiar el canvas, pero dejarlo oscuro
+  ctx.fillStyle = "rgba(0, 0, 0, 1)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+  // Crear el efecto de linterna (área visible)
+  ctx.save();  // Guardar el estado actual del canvas
   ctx.beginPath();
-  ctx.arc(x, y, 30, 0, 2 * Math.PI); // Define el área raspada
-  ctx.fill();
+  ctx.arc(x, y, 50, 0, 2 * Math.PI);  // Ajusta el radio para el efecto de linterna
+  ctx.clip();  // Recortar todo lo que esté fuera del círculo
+
+  // Dibujar solo el área visible de la imagen debajo del cursor
+  ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+  ctx.restore();  // Restaurar el estado completo del canvas
 });
