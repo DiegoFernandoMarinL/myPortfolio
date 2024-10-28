@@ -4,8 +4,8 @@ const backgroundImage = document.getElementById('backgroundImage');
 
 // Función para ajustar el tamaño del canvas
 function resizeCanvas() {
-  canvas.width = window.innerWidth * 0.8;
-  canvas.height = window.innerHeight * 0.6;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
   ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -45,16 +45,16 @@ canvas.addEventListener('mousemove', function(e) {
   const cornerSize = 100;  // Tamaño del área de detección en las esquinas
   if (x < cornerSize && y < cornerSize) {
     // Esquina superior izquierda
-    triggerRouteTransition('/ruta-esquina-superior-izquierda');
+    triggerRouteTransition('../view/aboutme.html');
   } else if (x > canvas.width - cornerSize && y < cornerSize) {
     // Esquina superior derecha
-    triggerRouteTransition('/ruta-esquina-superior-derecha');
+    triggerRouteTransition('../view/studies.html');
   } else if (x < cornerSize && y > canvas.height - cornerSize) {
     // Esquina inferior izquierda
-    triggerRouteTransition('/ruta-esquina-inferior-izquierda');
+    triggerRouteTransition('../view/experience.html');
   } else if (x > canvas.width - cornerSize && y > canvas.height - cornerSize) {
     // Esquina inferior derecha
-    triggerRouteTransition('/ruta-esquina-inferior-derecha');
+    triggerRouteTransition('../view/projects.html');
   }
 });
 
@@ -65,3 +65,17 @@ function triggerRouteTransition(route) {
     window.location.href = route;
   }, 500); // Esperar a que se complete el efecto de desvanecimiento
 }
+
+// Agregar evento para volver a la página principal
+document.addEventListener('DOMContentLoaded', function() {
+  const backButton = document.getElementById('backButton');
+  if (backButton) {
+    backButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.body.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 500);
+    });
+  }
+});
