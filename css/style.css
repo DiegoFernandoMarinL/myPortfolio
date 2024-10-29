@@ -1,24 +1,150 @@
+@font-face {
+  font-family: "Montserrat_light";
+  src: url(../storage/font/montserrat/Montserrat-Light.ttf);
+}
+@font-face {
+  font-family: "Montserrat_bold";
+  src: url(../storage/font/montserrat/Montserrat-Bold.ttf);
+}
+
+body {
+  transition: opacity 0.5s ease;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat_light", Arial, sans-serif;
+}
+
 .scratch-container {
-    position: relative;
-    width: 100vw; /* Ajusta el tamaño según tu imagen */
-    height: 100vh;
-  }
-  
-  #scratchCanvas, #backgroundImage {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-  
-  #backgroundImage {
-    z-index: -1; /* Coloca la imagen detrás del canvas */
-  }
-  
-  body {
-    transition: opacity 0.5s ease;
-  }
-  
-  body.fade-out {
-    opacity: 0;
-  }
-  
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+#scratchCanvas,
+#backgroundImage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#backgroundImage {
+  z-index: -1;
+}
+
+body.fade-out {
+  opacity: 0;
+}
+
+.page-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(120deg, #007bff, #0059ff, #032174);
+  background-size: 600% 600%;
+  animation: gradientBackground 10s ease infinite;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.5s ease, visibility 1.5s ease;
+}
+
+@keyframes gradientBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.page-container.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.content {
+  max-width: 800px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+.page-container.active .content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.profile-info {
+  text-align: left;
+}
+
+.profile-info p:nth-child(4) {
+  font-size: 15px;
+}
+
+.contact-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.contact-icons a {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+
+.contact-icons img {
+  width: 30px;
+}
+
+#backButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#backButton:hover {
+  background-color: #0056b3;
+}
+
+.study-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px 0;
+}
+.study-item {
+  min-width: 200px;
+  text-align: center;
+}
+.study-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}

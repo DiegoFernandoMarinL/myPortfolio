@@ -4,42 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acerca de mi</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        .contact-icons {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .contact-icons a {
-            width: 40px;
-            height: 40px;
-            display: inline-block;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <h1>Acerca de mi</h1>
-    <img src="ruta_a_tu_imagen.jpg" alt="Foto de perfil" class="profile-image">
-    <h2>Nombre Apellido</h2>
-    <p>Estudios: Tu carrera o área de estudio</p>
-    <p>Ciudad: Tu ciudad</p>
-    <div class="contact-icons">
-        <a href="#" target="_blank"><img src="ruta_icono_linkedin.png" alt="LinkedIn"></a>
-        <a href="#" target="_blank"><img src="ruta_icono_github.png" alt="GitHub"></a>
-        <a href="#" target="_blank"><img src="ruta_icono_email.png" alt="Email"></a>
-        <!-- Agrega más iconos de redes sociales según sea necesario -->
+    <div class="page-container">
+        <div class="content">
+            <h1>Acerca de mi</h1>
+            <div class="profile-container">
+                <img src="../storage/img/caricatura1.jpg" alt="Foto de perfil" class="profile-image">
+                <div class="profile-info">
+                    <h2>Diego Fernando Marin Larrota</h2>
+                    <p>Tecnico en programacion de software</p>
+                    <p>Bucaramanga, colombia</p>
+                    <p>Curioso y aventurero, siempre listo para enfrentar desafíos y explorar nuevos caminos</p>
+                    <div class="contact-icons">
+                        <a href="https://www.linkedin.com/in/diego-marin-078136284/" target="_blank"><img src="../storage/img/linkedin.png" alt="LinkedIn"></a>
+                        <a href="https://github.com/DiegoFernandoMarinL" target="_blank"><img src="../storage/img/github-sign.png" alt="GitHub"></a>
+                        <a href="mailto:diego.14.marin@gmail.com" target="_blank"><img src="../storage/img/email.png" alt="Email"></a>
+                    </div>
+                </div>
+            </div>
+            <button id="backButton">Volver</button>
+        </div>
     </div>
+    <script src="../js/main.js"></script>
 </body>
 </html>
