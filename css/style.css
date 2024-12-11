@@ -132,6 +132,11 @@ body.fade-out {
   background-color: #0056b3;
 }
 
+.content-study{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .study-container {
   display: flex;
   overflow-x: auto;
@@ -141,10 +146,16 @@ body.fade-out {
 .study-item {
   min-width: 200px;
   text-align: center;
+  width: 100px;
 }
 .study-image {
   width: 150px;
   height: 150px;
-  object-fit: cover;
   margin-bottom: 10px;
+  border-radius: 20px;
+}
+.study-description{ 
+  text-align: center;
+  justify-content: center;
+  height: 80px;
 }

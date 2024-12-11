@@ -13,16 +13,18 @@ function resizeCanvas() {
 backgroundImage.onload = resizeCanvas;
 window.addEventListener('resize', resizeCanvas);
 
+// Evento mousemove para mostrar el círculo de luz
 canvas.addEventListener('mousemove', function(e) {
     const rect = canvas.getBoundingClientRect();
     const x = (e.clientX - rect.left) * (canvas.width / rect.width);
     const y = (e.clientY - rect.top) * (canvas.height / rect.height);
 
+    // Dibuja nuevamente el fondo
     ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "rgba(0, 0, 0, 0.95)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    const radius = 50;
+    const radius = 80;
     const gradient = ctx.createRadialGradient(x, y, radius * 0.1, x, y, radius);
     gradient.addColorStop(0, 'rgba(255, 255, 200, 0.9)');
     gradient.addColorStop(0.4, 'rgba(255, 255, 255, 0.6)');
@@ -37,8 +39,15 @@ canvas.addEventListener('mousemove', function(e) {
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.restore();
+});
 
-    const cornerSize = 100;
+// Evento click para redirigir a diferentes rutas
+canvas.addEventListener('click', function(e) {
+    const rect = canvas.getBoundingClientRect();
+    const x = (e.clientX - rect.left) * (canvas.width / rect.width);
+    const y = (e.clientY - rect.top) * (canvas.height / rect.height);
+
+    const cornerSize = 400;
     if (x < cornerSize && y < cornerSize) {
         triggerRouteTransition('view/aboutme.html');
     } else if (x > canvas.width - cornerSize && y < cornerSize) {
