@@ -159,3 +159,30 @@ body.fade-out {
   justify-content: center;
   height: 80px;
 }
+.content-experience{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.experience-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px 0;
+}
+.experience-item {
+  min-width: 200px;
+  text-align: center;
+  width: 100px;
+}
+.experience-image {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+}
+.experience-description{ 
+  text-align: center;
+  justify-content: center;
+  height: 80px;
+}
