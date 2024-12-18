@@ -186,3 +186,30 @@ body.fade-out {
   justify-content: center;
   height: 80px;
 }
+.content-project{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.project-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px 0;
+}
+.project-item {
+  min-width: 200px;
+  text-align: center;
+  width: 100px;
+}
+.project-image {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+}
+.project-description{ 
+  text-align: center;
+  justify-content: center;
+  height: 80px;
+}
